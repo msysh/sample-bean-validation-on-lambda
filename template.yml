@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Test Code.
+
+  For Bean validation.
+  
+Globals:
+  Function:
+    Timeout: 30
+Resources:
+  MyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: TestBeanValidation
+      Handler: msysh.test.validationonlambda.LambdaFunctionHandler::handleRequest
+      CodeUri: ./target/validationonlambda-1.0.0.jar
+      Runtime: java8
+      MemorySize: 256
+      Role: !GetAtt MyFunctionRole.Arn
+      Environment: 
+        Variables:
+          AWS_CBOR_DISABLE: true
+  MyFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: TestBeanValidation
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Effect: Allow
+          Action: sts:AssumeRole
+          Principal:
+            Service: lambda.amazonaws.com
+      Policies:
+      -
+        PolicyName: root
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+          -
+            Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource: '*'
