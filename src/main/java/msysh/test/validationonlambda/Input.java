@@ -1,14 +1,18 @@
 package msysh.test.validationonlambda;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Input {
 	
@@ -29,38 +33,6 @@ public class Input {
 	@Valid
 	@JsonProperty("child")
 	private InputChild child;
-
-	public List<Integer> getList() {
-		return list;
-	}
-
-	public void setList(List<Integer> list) {
-		this.list = list;
-	}
-
-	public Integer getNum() {
-		return num;
-	}
-
-	public void setNum(Integer num) {
-		this.num = num;
-	}
-
-	public String getStr() {
-		return str;
-	}
-
-	public void setStr(String str) {
-		this.str = str;
-	}
-	
-	public InputChild getChild() {
-		return child;
-	}
-	
-	public void setChild(InputChild child) {
-		this.child = child;
-	}
 	
 	@Override
 	public String toString() {
