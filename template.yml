@@ -18,9 +18,9 @@ Resources:
       Runtime: java8
       MemorySize: 256
       Role: !GetAtt MyFunctionRole.Arn
-      Environment: 
-        Variables:
-          AWS_CBOR_DISABLE: true
+#      Environment: 
+#       Variables:
+#          AWS_CBOR_DISABLE: true
   MyFunctionRole:
     Type: AWS::IAM::Role
     Properties:

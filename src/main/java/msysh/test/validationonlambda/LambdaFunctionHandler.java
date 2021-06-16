@@ -46,7 +46,7 @@ public class LambdaFunctionHandler implements RequestHandler<Object, String> {
 			}
 		}
 		catch (Exception e) {
-			context.getLogger().log(e.getMessage());
+			logger.log(e.getMessage());
 		}
 
 		return "Done.";

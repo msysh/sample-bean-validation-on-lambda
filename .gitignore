@@ -1,7 +1,15 @@
-target
-samconfig.toml
+# Eclipse
+/.classpath
+/.project
+/.settings
 
-.aws-sam
-.classpath
-.project
-.settings/
+# Maven
+/target/**/*
+!/target/
+dependency-reduced-pom.xml
+
+# Local
+/.local
+
+/.aws-sam
+samconfig.toml
